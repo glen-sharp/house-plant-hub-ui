@@ -1,0 +1,9 @@
+services:
+  frontend:
+    container_name: house-plant-hub-ui
+    build:
+      context: .
+      args:
+        ORIGIN: ${ORIGIN:-localhost}
+    ports:
+      - 3000:80
