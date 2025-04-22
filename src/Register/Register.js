@@ -193,9 +193,9 @@ export default function UserInfoInput() {
                         >Oops! Something went wrong.</Alert>
                     )}
                 </div>
-            </div>
-            <div className="login-link-wrapper">
-                <p>Already registered? Login <a href="/login" rel="noreferrer">here</a></p>
+                <div className="login-link-wrapper">
+                    <p>Already registered? Login <a href="/login" rel="noreferrer">here</a></p>
+                </div>
             </div>
         </div>
     )

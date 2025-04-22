@@ -17,7 +17,9 @@
 }
 
 .button-error-wrapper {
-  margin: 10px;
+  margin: 15px;
+  flex-direction: row;
+  display: flex;
 }
 
 .email-password-wrapper {

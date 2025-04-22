@@ -46,7 +46,7 @@ export default function UserLoginInput() {
 
     return (
         <div className="login-wrapper">
-            <div className="login-input-wrapper">
+            <div className="login-input-wrapper" style={{ backgroundColor: 'white' }}>
                 <div className="title-wrapper">
                     <h1>
                         Login
@@ -107,19 +107,20 @@ export default function UserLoginInput() {
                         variant="contained"
                         onClick={() => LoginUser()}
                         disabled={emailValue && passwordValue ? false : true}
+                        style={{ minHeight: '49.014px' }}
                     >Login</Button>
                     {errorState && (
                         <Alert
                             severity="error"
-                            style={{ marginTop: '1px', marginLeft: '20px', maxWidth: '17em' }}
+                            style={{ marginTop: '1px', marginLeft: '20px', maxWidth: '25em' }}
                         >
-                            {errorState.message === "403" ? "User does not exist" : "Oops! Something went wrong."}
+                            {errorState.message === "403" ? "Please enter correct username and password" : "Oops! Something went wrong."}
                         </Alert>
                     )}
                 </div>
-            </div>
-            <div className="register-link-wrapper">
-                <p>Not registered? Create user <a href="/register" rel="noreferrer">here</a></p>
+                <div className="register-link-wrapper">
+                    <p>Not registered? Create user <a href="/register" rel="noreferrer">here</a></p>
+                </div>
             </div>
         </div>
     )
