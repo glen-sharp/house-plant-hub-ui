@@ -13,7 +13,7 @@ npm install
 
 npm run build
 
-npm start
+REACT_APP_HOST_IP_ADDRESS=<IP Address> npm start
 ```
 
 ## Deploying UI via Docker Image
