@@ -14,8 +14,6 @@ export default function Dashboard() {
         const data = await response.json()
 
         setPlants(data.plants_array)
-
-        console.log(data)
     }
 
     useEffect(() => {
