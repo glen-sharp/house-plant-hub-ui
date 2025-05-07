@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 
 const hostIpAddress = process.env.REACT_APP_HOST_IP_ADDRESS;
 
-const BASE_URL = 'https://' + hostIpAddress + '/api/v1/'
+const BASE_URL = hostIpAddress + '/api/v1/'
 
 function handleResponse(res) {
     if (res.status === 401) {
@@ -15,6 +15,20 @@ function handleResponse(res) {
 
 function GetReadings() {
     return fetch(BASE_URL + 'readings/', {
+        method: 'GET',
+        credentials: 'include',
+    })
+    .then(res => handleResponse(res))
+    .then(data => {
+        return data
+    })
+    .catch((error) => {
+        throw error;
+    });
+}
+
+function GetReadingHistory(plantId) {
+    return fetch(BASE_URL + 'reading_history/?plant_id=' + plantId, {
         method: 'GET',
         credentials: 'include',
     })
@@ -83,4 +97,5 @@ export {
     RegisterUser,
     UserLogin,
     UserLogout,
+    GetReadingHistory,
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Button from '@mui/material/Button';
 
 import "./PlantDashboard.css";
 import Gauge from './Gauge/Gauge'
@@ -16,6 +17,11 @@ export default function Dashboard() {
         setPlants(data.plants_array)
     }
 
+    function historyRedirect(plantId) {
+        const url = 'history/' + plantId
+        window.location.assign(url);
+    }
+
     useEffect(() => {
         getData()
     }, [])
@@ -23,13 +29,23 @@ export default function Dashboard() {
     return (
         <div className="gauge-wrapper">
             {plants.map((val, id) => (
-            <div className="gauge" key={id}>
-                <Gauge
-                    plantName={val.plant_name}
-                    roomName={val.room_name}
-                    roomLocation={val.room_location}
-                    moisturePercentage={val.moisture_percentage}
-                />
+            <div className="gauge-button-wrapper" key={id}>
+                <div className="gauge">
+                    <Gauge
+                        plantName={val.plant_name}
+                        roomName={val.room_name}
+                        roomLocation={val.room_location}
+                        moisturePercentage={val.moisture_percentage}
+                    />
+                </div>
+                <div className="Button">
+                    <Button
+                        variant="contained"
+                        onClick={() => historyRedirect(val.id)}
+                    >
+                        History
+                    </Button>
+                </div>
             </div>
             ))}
         </div>

@@ -7,6 +7,14 @@
     background-color: #282C35;
 }
 
+.Button {
+    display: flex;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
 .gauge {
     width: 20rem;
     min-width: 10rem;
