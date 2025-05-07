@@ -49,6 +49,10 @@ export default function ReadingHistory() {
                 yAxis={[{
                     label: "Moisture (%)",
                     width: 10,
+                    domainLimit: (min, max) => ({
+                        min: 0,
+                        max: 100,
+                    })
                 }]}
                 height={300}
                 skipAnimation
