@@ -12,11 +12,11 @@ function App() {
     <Router>
       <HeaderBar />
       <Routes>
-        <Route exact path="/register" element={<UserInfoInput/>}></Route>
-        <Route exact path="/login" element={<UserLoginInput/>}></Route>
-        <Route exact path="/logout" element={<LogOut/>}></Route>
-        <Route exact path="/" element={<Dashboard/>}></Route>
-        <Route exact path="/history/:plantId" element={<ReadingHistory/>}></Route>
+        <Route exact path="/register" element={<UserInfoInput />}></Route>
+        <Route exact path="/login" element={<UserLoginInput />}></Route>
+        <Route exact path="/logout" element={<LogOut />}></Route>
+        <Route exact path="/" element={<Dashboard />}></Route>
+        <Route exact path="/history/:plantId" element={<ReadingHistory />}></Route>
       </Routes>
     </Router>
   );
