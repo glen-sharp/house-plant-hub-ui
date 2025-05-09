@@ -49,7 +49,7 @@ export default function UserLoginInput() {
             <div className="login-input-wrapper" style={{ backgroundColor: 'white' }}>
                 <div className="title-wrapper">
                     <h1>
-                        User Login
+                        Login
                     </h1>
                 </div>
                 <div>
