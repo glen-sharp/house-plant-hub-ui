@@ -11,5 +11,5 @@ jobs:
       - uses: actions/checkout@v3
       - name: Build image
         run: COMPOSE_BAKE=true ORIGIN=https://houseplant-hub-api.glen-sharp.uk docker compose build
-      - name: Run image
+      - name: Run container
         run: docker compose up -d
