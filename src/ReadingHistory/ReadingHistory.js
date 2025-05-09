@@ -12,7 +12,6 @@ export default function ReadingHistory() {
     const { plantId } = useParams();
 
     const [recordHistory, setRecordHistory] = useState([]);
-    const [dateHistory, setDateHistory] = useState([]);
     const [tickDates, setTickDates] = useState([]);
 
     async function getData(plantId) {
@@ -29,7 +28,7 @@ export default function ReadingHistory() {
 
     useEffect(() => {
         getData(plantId)
-    }, [])
+    }, [plantId])
 
     return (
         <div className="line-chart-div">
