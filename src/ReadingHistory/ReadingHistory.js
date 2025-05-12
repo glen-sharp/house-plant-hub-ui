@@ -13,12 +13,14 @@ export default function ReadingHistory() {
 
     const [recordHistory, setRecordHistory] = useState([]);
     const [tickDates, setTickDates] = useState([]);
+    const [plantName, setPlantName] = useState("");
 
     async function getData(plantId) {
         const response = await GetReadingHistory(plantId);
         const data = await response.json();
 
         setRecordHistory(data.moisture_readings)
+        setPlantName(data.plant_name)
 
         setTickDates(data.moisture_readings.map(record => {
             return dayjs(record.reading_datetime).format("YYYY-MM-DD");
@@ -32,6 +34,7 @@ export default function ReadingHistory() {
 
     return (
         <div className="line-chart-div">
+            <h1 className="title">{plantName}</h1>
             <LineChart
                 xAxis={[{
                     scaleType: "time",
@@ -53,7 +56,7 @@ export default function ReadingHistory() {
                         max: 100,
                     })
                 }]}
-                height={300}
+                height={400}
                 skipAnimation
                 grid={{ horizontal: true, vertical: true }}
                 slotProps={{ tooltip: { trigger: 'none' } }}

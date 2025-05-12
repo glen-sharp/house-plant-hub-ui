@@ -2,3 +2,12 @@
     background-color: white;
     margin: 20px;
 }
+
+.title {
+    display: flex;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 30px;
+    margin: 0 auto;
+}
