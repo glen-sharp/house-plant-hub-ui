@@ -77,25 +77,9 @@ function UserLogin(login_info) {
     });
 }
 
-function UserLogout() {
-    return fetch(BASE_URL + 'auth/logout/', {
-        method: 'GET',
-        credentials: 'include',
-    })
-    .then(res => handleResponse(res))
-    .then(data => {
-        return data
-    })
-    .catch((error) => {
-        throw error;
-    });
-}
-
-
 export {
     GetReadings,
     RegisterUser,
     UserLogin,
-    UserLogout,
     GetReadingHistory,
 }
