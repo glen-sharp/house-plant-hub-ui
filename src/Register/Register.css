@@ -6,7 +6,7 @@
   margin-left: auto;
   margin-right: auto;
   border: 0.1px solid black;
-  margin-top: 5rem;
+  margin-top: 2rem;
   padding: 20px;
 }
 
@@ -17,6 +17,12 @@
 .name-wrapper {
   flex-direction: row;
   display: flex;
+}
+
+@media (max-width: 600px) {
+  .name-wrapper {
+      display: block;
+  }
 }
 
 .email-password-wrapper {

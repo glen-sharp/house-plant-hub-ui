@@ -12,7 +12,7 @@
   width: 100%;
   max-width: fit-content;
   border: 0.1px solid black;
-  margin-top: 5rem;
+  margin-top: 2rem;
   padding: 20px;
 }
 
@@ -25,6 +25,12 @@
 .email-password-wrapper {
   flex-direction: row;
   display: flex;
+}
+
+@media (max-width: 600px) {
+  .email-password-wrapper {
+      display: block;
+  }
 }
 
 .register-link-wrapper {
