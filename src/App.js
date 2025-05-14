@@ -28,8 +28,11 @@ function App() {
 
   return (
     <Router>
-      <div className={isSticky ? 'sticky' : ''}>
-        <HeaderBar/>
+      <div
+        className={isSticky ? 'sticky' : ''}
+        style={{ zIndex: "1" }}
+      >
+        <HeaderBar />
       </div>
       <div style={{ marginTop: isSticky ? '56px' : '0' }}>
         <Routes>
