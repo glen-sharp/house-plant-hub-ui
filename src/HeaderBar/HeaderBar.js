@@ -7,7 +7,7 @@ export default function HeaderBar() {
         <AppBar position="static" sx={{ bgcolor: "#065EF2" }}>
             <Toolbar>
                 <Typography variant="h6" component="div" style={{ fontWeight: 600 }}>
-                    Houseplant Dashboard
+                    Houseplant Hub
                 </Typography>
             </Toolbar>
         </AppBar>
