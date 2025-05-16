@@ -5,7 +5,7 @@
     width: fit-content;
     height: auto;
     background-color: #282C35;
-    margin-top: 1rem;
+    margin-top: 16px;
 }
 
 @media (max-width: 1000px) {

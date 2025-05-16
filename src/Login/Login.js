@@ -69,7 +69,7 @@ export default function UserLoginInput() {
                                     inputProps={{
                                         maxLength: 100,
                                     }}
-                                    sx={{ width: "15rem" }}
+                                    sx={{ width: "240px" }}
                                     onChange={(e) => {
                                         setEmailValue(e.target.value);
                                     }}
@@ -89,7 +89,7 @@ export default function UserLoginInput() {
                                     inputProps={{
                                         maxLength: 50,
                                     }}
-                                    sx={{ width: "15rem" }}
+                                    sx={{ width: "240px" }}
                                     onChange={(e) => {
                                         setPasswordValue(e.target.value);
                                     }}

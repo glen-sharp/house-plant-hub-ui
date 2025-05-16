@@ -87,7 +87,7 @@ export default function UserInfoInput() {
                                     inputProps={{
                                         maxLength: 20,
                                     }}
-                                    sx={{ width: "15rem" }}
+                                    sx={{ width: "240px" }}
                                     onChange={(e) => {
                                         setForenameValue(e.target.value);
                                         setIsForenameValid(e.target.value.match(validForenameRegEx));
@@ -111,7 +111,7 @@ export default function UserInfoInput() {
                                     inputProps={{
                                         maxLength: 20,
                                     }}
-                                    sx={{ width: "15rem" }}
+                                    sx={{ width: "240px" }}
                                     onChange={(e) => {
                                         setSurnameValue(e.target.value);
                                         setIsSurnameValid(e.target.value.match(validSurnameRegEx));
@@ -137,7 +137,7 @@ export default function UserInfoInput() {
                                     inputProps={{
                                         maxLength: 100,
                                     }}
-                                    sx={{ width: "15rem" }}
+                                    sx={{ width: "240px" }}
                                     onChange={(e) => {
                                         setEmailValue(e.target.value);
                                         setIsEmailValid(e.target.value.match(validEmailRegEx));
@@ -162,7 +162,7 @@ export default function UserInfoInput() {
                                     inputProps={{
                                         maxLength: 50,
                                     }}
-                                    sx={{ width: "15rem" }}
+                                    sx={{ width: "240px" }}
                                     onChange={(e) => {
                                         setPasswordValue(e.target.value);
                                         setIsPasswordValid(e.target.value.match(validPasswordRegEx));
