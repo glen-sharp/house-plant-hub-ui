@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
@@ -17,6 +18,7 @@ export default function UserLoginInput() {
     const [passwordValue, setPasswordValue] = useState("");
 
     const [errorState, setErrorState] = useState("");
+    const [loginState, setLoginState] = useState("");
 
     const navigate = useNavigate();
 
@@ -30,17 +32,20 @@ export default function UserLoginInput() {
             password: passwordValue
         };
         try {
-            await UserLogin(contact);
-
             if (errorState) {
                 setErrorState("")
             };
+
+            setLoginState(true)
+            await UserLogin(contact);
 
             setEmailValue("");
             setPasswordValue("");
             redirect()
         } catch (error) {
-            setErrorState(error);
+            setLoginState("")
+            const parsed_error = JSON.parse(error.message);
+            setErrorState(parsed_error);
         }
     }
 
@@ -103,18 +108,21 @@ export default function UserLoginInput() {
                     </Box>
                 </div>
                 <div className="button-error-wrapper">
-                    <Button
-                        variant="contained"
-                        onClick={() => LoginUser()}
-                        disabled={emailValue && passwordValue ? false : true}
-                        style={{ minHeight: '49.014px' }}
-                    >Login</Button>
+                    {!loginState ? (
+                        <Button
+                            variant="contained"
+                            onClick={() => LoginUser()}
+                            disabled={emailValue && passwordValue ? false : true}
+                            style={{ minHeight: '49.014px' }}
+                        >Login
+                        </Button>
+                    ) : <div className="progress-wheel"><CircularProgress /></div>}
                     {errorState && (
                         <Alert
                             severity="error"
                             style={{ marginTop: '1px', marginLeft: '20px', maxWidth: '25em' }}
                         >
-                            {errorState.message === "403" ? "Please enter correct username and password" : "Oops! Something went wrong."}
+                            {errorState.status === 403 ? errorState.message : "Oops! Something went wrong."}
                         </Alert>
                     )}
                 </div>

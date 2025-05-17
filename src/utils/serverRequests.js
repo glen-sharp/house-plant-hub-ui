@@ -4,11 +4,17 @@ const hostIpAddress = process.env.REACT_APP_HOST_IP_ADDRESS;
 
 const BASE_URL = hostIpAddress + '/api/v1/'
 
-function handleResponse(res) {
+async function handleResponse(res) {
     if (res.status === 401) {
         window.location.replace('/login');
     } else if (res.status !== 200) {
-        throw new Error(res.status);
+        const errorData = await res.json();
+        const errorResponse = {
+            status: res.status,
+            message: errorData.message
+        }
+
+        throw new Error(JSON.stringify(errorResponse));
     }
     return res;
   }  

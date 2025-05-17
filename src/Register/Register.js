@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ export default function UserInfoInput() {
     const [isPasswordValid, setIsPasswordValid] = useState("");
 
     const [errorState, setErrorState] = useState("");
+    const [registerState, setRegisterState] = useState("");
 
     const validForenameRegEx = "^[a-zA-Z-]*$";
     const validEmailRegEx = "^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-.]+$";
@@ -45,11 +47,12 @@ export default function UserInfoInput() {
             password: passwordValue
         };
         try {
-            await RegisterUser(contact);
-
             if (errorState) {
                 setErrorState("")
             };
+
+            setRegisterState(true)
+            await RegisterUser(contact);
 
             setForenameValue("");
             setSurnameValue("");
@@ -58,7 +61,9 @@ export default function UserInfoInput() {
 
             redirect()
         } catch (error) {
-            setErrorState(true);
+            setRegisterState("")
+            const parsed_error = JSON.parse(error.message);
+            setErrorState(parsed_error);
         }
     }
 
@@ -181,16 +186,19 @@ export default function UserInfoInput() {
                     </Box>
                 </div>
                 <div className="button-error-wrapper">
-                    <Button
-                        variant="contained"
-                        onClick={() => register_user()}
-                        disabled={forenameValue && surnameValue && emailValue && passwordValue && isForenameValid && isSurnameValid && isEmailValid && isPasswordValid ? false : true}
-                    >Register</Button>
+                    {!registerState ? (
+                        <Button
+                            variant="contained"
+                            onClick={() => register_user()}
+                            disabled={forenameValue && surnameValue && emailValue && passwordValue && isForenameValid && isSurnameValid && isEmailValid && isPasswordValid ? false : true}
+                            style={{ minHeight: '49.014px' }}
+                        >Register</Button>
+                    ) : <div className="register-progress-wheel"><CircularProgress /></div>}
                     {errorState && (
                         <Alert
                             severity="error"
-                            style={{ marginTop: '1px', marginLeft: '20px', width: '17em' }}
-                        >Oops! Something went wrong.</Alert>
+                            style={{ marginTop: '1px', marginLeft: '20px', maxWidth: '17em' }}
+                        >{errorState.message === "Email already exists" ? errorState.message : "Oops! Something went wrong."}</Alert>
                     )}
                 </div>
                 <div className="login-link-wrapper">
