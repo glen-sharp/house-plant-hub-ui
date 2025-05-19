@@ -1,7 +1,10 @@
 import React from "react";
 import GaugeComponent from 'react-gauge-component';
 
+import { useState } from "react";
+
 import { maxGaugeValue, minGaugeValue } from '../../utils/constants'
+import ImageTooltip from "../../ImageTooltip/ImageTooltip";
 
 
 export default function EmissionsPage({
@@ -9,7 +12,10 @@ export default function EmissionsPage({
     roomName,
     roomLocation,
     moisturePercentage,
+    imageUrl
 }) {
+    const [isVisible, setIsVisible] = useState(false)
+
     return (
         <div style={{ width: '100%', backgroundColor: '#282C35' }}>
             <GaugeComponent
@@ -54,8 +60,13 @@ export default function EmissionsPage({
                 }}
             />
             <div>
-                <h1 style={{ color: 'white', textAlign: 'center', margin: 5 }}>
+                <h1
+                    style={{ color: 'white', textAlign: 'center', margin: 5 }}
+                    onMouseEnter={() => setIsVisible(true)}
+                    onMouseLeave={() => setIsVisible(false)}    
+                >
                     {plantName}
+                    {!isVisible && <ImageTooltip imageUrl={imageUrl} />}
                 </h1>
                 <h2 style={{ color: 'white', textAlign: 'center', margin: 0 }}>
                     {roomName}: {roomLocation}

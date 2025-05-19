@@ -6,7 +6,8 @@ import { LineChart } from '@mui/x-charts/LineChart';
 import dayjs from "dayjs";
 
 import { GetReadingHistory } from "../utils/serverRequests";
-import "./ReadingHistory.css"
+import ImageTooltip from "../ImageTooltip/ImageTooltip";
+import "./ReadingHistory.css";
 
 export default function ReadingHistory() {
     const { plantId } = useParams();
@@ -14,6 +15,9 @@ export default function ReadingHistory() {
     const [recordHistory, setRecordHistory] = useState([]);
     const [tickDates, setTickDates] = useState([]);
     const [plantName, setPlantName] = useState("");
+    const [plantImageUrl, setPlantImageUrl] = useState("");
+
+    const [isVisible, setIsVisible] = useState(false)
 
     async function getData(plantId) {
         const response = await GetReadingHistory(plantId);
@@ -21,6 +25,7 @@ export default function ReadingHistory() {
 
         setRecordHistory(data.moisture_readings)
         setPlantName(data.plant_name)
+        setPlantImageUrl(data.image_url)
 
         setTickDates(data.moisture_readings.map(record => {
             return dayjs(record.reading_datetime).format("YYYY-MM-DD");
@@ -34,7 +39,14 @@ export default function ReadingHistory() {
 
     return (
         <div className="line-chart-div">
-            <h1 className="title">{plantName}</h1>
+            <h1
+                className="title"
+                onMouseEnter={() => setIsVisible(true)}
+                onMouseLeave={() => setIsVisible(false)}
+            >
+                {plantName}
+                {!isVisible && <ImageTooltip imageUrl={plantImageUrl} />}
+            </h1>
             <LineChart
                 xAxis={[{
                     scaleType: "time",

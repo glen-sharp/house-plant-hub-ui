@@ -36,6 +36,7 @@ export default function Dashboard() {
                         roomName={val.room_name}
                         roomLocation={val.room_location}
                         moisturePercentage={val.moisture_percentage}
+                        imageUrl={val.image_url}
                     />
                 </div>
                 <div className="Button">
