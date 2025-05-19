@@ -45,7 +45,7 @@ export default function ReadingHistory() {
                 onMouseLeave={() => setIsVisible(false)}
             >
                 {plantName}
-                {!isVisible && <ImageTooltip imageUrl={plantImageUrl} />}
+                {isVisible && <ImageTooltip imageUrl={plantImageUrl} />}
             </h1>
             <LineChart
                 xAxis={[{

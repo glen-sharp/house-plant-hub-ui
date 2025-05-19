@@ -66,7 +66,7 @@ export default function EmissionsPage({
                     onMouseLeave={() => setIsVisible(false)}    
                 >
                     {plantName}
-                    {!isVisible && <ImageTooltip imageUrl={imageUrl} />}
+                    {isVisible && <ImageTooltip imageUrl={imageUrl} />}
                 </h1>
                 <h2 style={{ color: 'white', textAlign: 'center', margin: 0 }}>
                     {roomName}: {roomLocation}
